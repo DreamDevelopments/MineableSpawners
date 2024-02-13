@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -61,6 +62,9 @@ public class SpawnerExplodeListener implements Listener {
                         newLore.add(Chat.format(line).replace("%mob%", mobFormatted));
                     }
                     meta.setLore(newLore);
+                }
+                if(plugin.getConfigurationHandler().getBoolean("global", "hide-minecraft-lore")) {
+                    meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
                 }
                 item.setItemMeta(meta);
             }

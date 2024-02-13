@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -54,6 +55,9 @@ public class GiveSubCommand {
                 newLore.add(Chat.format(line).replace("%mob%", mobFormatted));
             }
             meta.setLore(newLore);
+        }
+        if(plugin.getConfigurationHandler().getBoolean("global", "hide-minecraft-lore")) {
+            meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
         }
         item.setItemMeta(meta);
 

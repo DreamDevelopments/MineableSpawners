@@ -11,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -67,6 +68,9 @@ public class WitherBreakSpawnerListener implements Listener {
                     newLore.add(Chat.format(line).replace("%mob%", mobFormatted));
                 }
                 meta.setLore(newLore);
+            }
+            if(plugin.getConfigurationHandler().getBoolean("global", "hide-minecraft-lore")) {
+                meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
             }
             item.setItemMeta(meta);
         }

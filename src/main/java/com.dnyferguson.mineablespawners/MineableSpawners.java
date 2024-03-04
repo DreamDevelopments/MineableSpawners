@@ -8,7 +8,6 @@ import com.dnyferguson.mineablespawners.listeners.SpawnerMineListener;
 import com.dnyferguson.mineablespawners.listeners.SpawnerPlaceListener;
 import com.dnyferguson.mineablespawners.listeners.SpawnerExplodeListener;
 import com.dnyferguson.mineablespawners.listeners.WitherBreakSpawnerListener;
-import com.dnyferguson.mineablespawners.metrics.Metrics;
 import com.dnyferguson.mineablespawners.utils.ConfigurationHandler;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.entity.EntityType;
@@ -49,12 +48,9 @@ public final class MineableSpawners extends JavaPlugin {
                 str.append(type.name());
                 str.append("\n");
             }
-            getLogger().info(str.toString());
         }
 
         api = new API(this);
-        int pluginId = 7354;
-        Metrics metrics = new Metrics(this, pluginId);
     }
 
     private boolean setupEconomy() {
